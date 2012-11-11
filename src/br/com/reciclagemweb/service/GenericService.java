@@ -8,5 +8,5 @@ public interface GenericService<T>{
 	void alterar(T entidade)throws Exception;
 	void deletar(T entidade) throws Exception;
 	List<T> list();
-	T buscar(final long id);
+	T buscar(final Integer id);
 }

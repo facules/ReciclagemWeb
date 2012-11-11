@@ -2,25 +2,30 @@ package br.com.reciclagemweb.business.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-//serializable empacota o objeto, permitindo que seja persistido
+@Table(name = "tbl_produto")
 public class Produto implements Serializable {
 
-	//atributo que define vers�o pro objeto, para poder ser empacotado e desenpacotado.Java usa como referencia.
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue
+	@Column(name="id_produto")
 	private int id;
 	
+	@Column(name="cod_produto")
 	private int codigo;
 	
+	@Column(name="nm_produto")
 	private String produto;
 	
+	@Column(name="ds_produto", columnDefinition="TEXT")
 	private String descricao;
 
 	public int getCodigo() {
@@ -54,5 +59,4 @@ public class Produto implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
 }

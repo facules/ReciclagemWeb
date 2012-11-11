@@ -1,5 +1,5 @@
 package br.com.reciclagemweb.dao;
 
-public interface ProdutoDescarteDAO {
+import br.com.reciclagemweb.business.entity.ProdutoDescarte;
 
-}
+public interface ProdutoDescarteDAO extends GenericDAO<ProdutoDescarte>{}

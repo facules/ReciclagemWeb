@@ -1,5 +1,5 @@
 package br.com.reciclagemweb.dao;
 
-public interface TipoDescarteDAO {
+import br.com.reciclagemweb.business.entity.TipoDescarte;
 
-}
+public interface TipoDescarteDAO extends GenericDAO<TipoDescarte>{}

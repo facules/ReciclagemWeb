@@ -3,17 +3,24 @@ package br.com.reciclagemweb.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import br.com.reciclagemweb.business.entity.Produto;
 import br.com.reciclagemweb.dao.GenericDAO;
 import br.com.reciclagemweb.service.GenericService;
 
-@Service
-public class GenericServiceImpl<T> implements GenericService<T>{
+public class GenericServiceImpl<T, DAO> implements GenericService<T>{
 
-	@Autowired
-	private GenericDAO dao;
+	private Class<DAO> klassDAO;
+	
+	private GenericDAO<T> dao;
+	
+	public void setDefaultDAO(GenericDAO<T> dao) {
+		this.dao = dao;
+		this.klassDAO = (Class<DAO>) dao.getClass();
+	}
+	
+	public DAO getDao() {
+		return klassDAO.cast(dao);
+	}
 	
 	@Override
 	public void adicionar(T entidade) throws Exception {
@@ -42,7 +49,7 @@ public class GenericServiceImpl<T> implements GenericService<T>{
 	}
 
 	@Override
-	public T buscar(long id) {
+	public T buscar(Integer id) {
 		// TODO Auto-generated method stub
 		return (T) dao.buscar(id);
 	}

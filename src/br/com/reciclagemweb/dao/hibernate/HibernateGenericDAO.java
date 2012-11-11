@@ -12,14 +12,15 @@ import br.com.reciclagemweb.dao.GenericDAO;
 public class HibernateGenericDAO<T> implements GenericDAO<T> {
 	
 	private final SessionFactory sessionFactory;
-	private final Class <T> classe;
+	protected final Class <T> classe;
+	
 	public HibernateGenericDAO(final Class<T> classe, final SessionFactory sessionfactory){
 		this.sessionFactory=sessionfactory;
 		this.classe= classe;
 	}
 
 
-	private Session getSession(){
+	public Session getSession(){
 		return sessionFactory.getCurrentSession();
 	}
 	
@@ -52,7 +53,7 @@ public class HibernateGenericDAO<T> implements GenericDAO<T> {
 
 	@Override
 	@Transactional
-	public T buscar(final long id) {
+	public T buscar(final int id) {
 		return (T) getSession().load(classe, id);
 	}
 
