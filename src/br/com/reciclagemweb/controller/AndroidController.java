@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.view.Results;
+import br.com.reciclagemweb.business.dto.DescarteDTO;
 import br.com.reciclagemweb.business.entity.Usuario;
 import br.com.reciclagemweb.service.ProdutoDescarteService;
 import br.com.reciclagemweb.service.ProdutoService;
@@ -48,6 +49,15 @@ public class AndroidController {
 	
 	public void listaDeDescartes(){
 		result.use(Results.json()).withoutRoot().from(produtoDescarteService.list()).serialize();
+	}
+	
+	public void listaTipoDescarte(){
+		result.use(Results.json()).withoutRoot().from(tipoDescarteService.list()).serialize();
+	}
+	
+	public void descarte(DescarteDTO descarteDto){
+		System.out.println(descarteDto.getIdUsuario());
+		produtoDescarteService.descarte(descarteDto);
 	}
 
 }
