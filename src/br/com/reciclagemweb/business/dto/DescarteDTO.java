@@ -8,7 +8,11 @@ public class DescarteDTO {
 	
 	private int idProduto;
 	
+	private String descricaoProduto;
+	
 	private int idTipoDescarte;
+	
+	private String descricaoTipoDescarte;
 	
 	private Date descarte;
 	
@@ -62,5 +66,21 @@ public class DescarteDTO {
 
 	public void setMotivo(String motivo) {
 		this.motivo = motivo;
+	}
+
+	public String getDescricaoProduto() {
+		return descricaoProduto;
+	}
+
+	public void setDescricaoProduto(String descricaoProduto) {
+		this.descricaoProduto = descricaoProduto;
+	}
+
+	public String getDescricaoTipoDescarte() {
+		return descricaoTipoDescarte;
+	}
+
+	public void setDescricaoTipoDescarte(String descricaoTipoDescarte) {
+		this.descricaoTipoDescarte = descricaoTipoDescarte;
 	}
 }

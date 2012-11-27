@@ -48,15 +48,14 @@ public class AndroidController {
 	}
 	
 	public void listaDeDescartes(){
-		result.use(Results.json()).withoutRoot().from(produtoDescarteService.list()).serialize();
+		result.use(Results.json()).withoutRoot().from(produtoDescarteService.listDescarteDTO()).serialize();
 	}
 	
-	public void listaTipoDescarte(){
+	public void listaTiposDescarte(){
 		result.use(Results.json()).withoutRoot().from(tipoDescarteService.list()).serialize();
 	}
 	
 	public void descarte(DescarteDTO descarteDto){
-		System.out.println(descarteDto.getIdUsuario());
 		produtoDescarteService.descarte(descarteDto);
 	}
 

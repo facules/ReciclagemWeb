@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "tbl_produto_descarte")
@@ -35,6 +37,7 @@ public class ProdutoDescarte implements Serializable {
 	private TipoDescarte tipoDescarte;
 	
 	@Column(name="dt_descarte")
+	@Temporal(TemporalType.DATE)
 	private Date descarte;
 	
 	@Column(name="qtde_descarte")

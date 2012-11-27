@@ -1,5 +1,9 @@
 package br.com.reciclagemweb.service.impl;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +39,7 @@ public class ProdutoDescarteServiceImpl extends GenericServiceImpl<ProdutoDescar
 		Usuario usuario = new Usuario();
 		usuario.setId(descarteDto.getIdUsuario());
 		descarte.setUsuario(usuario);
+		descarte.setDescarte(new Date());
 		
         try {
 			getDao().adicionar(descarte);
@@ -42,6 +47,25 @@ public class ProdutoDescarteServiceImpl extends GenericServiceImpl<ProdutoDescar
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public List<DescarteDTO> listDescarteDTO() {
+		
+		List<ProdutoDescarte> descartes = getDao().list();		
+		List<DescarteDTO> descartesDto = new ArrayList<DescarteDTO>();
+		
+		for(ProdutoDescarte descarte: descartes){
+			DescarteDTO descarteDto = new DescarteDTO();
+			descarteDto.setDescricaoProduto(descarte.getProduto().getProduto());
+			descarteDto.setDescricaoTipoDescarte(descarte.getTipoDescarte().getNome());
+			descarteDto.setMotivo(descarte.getMotivo());
+			descarteDto.setQuantidade(descarte.getQuantidade());
+			
+			descartesDto.add(descarteDto);
+		}
+		
+		return descartesDto;
 	}
 	
 }
